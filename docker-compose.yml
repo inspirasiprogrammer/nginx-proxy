@@ -1,0 +1,27 @@
+version: '3'
+services:
+    proxy:
+        container_name: proxy
+        restart: always
+        image: jwilder/nginx-proxy
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - /var/run/docker.sock:/tmp/docker.sock:ro
+            - ./certs:/etc/nginx/certs
+            - /etc/nginx/vhost.d
+        networks:
+            - nginx-proxy-network
+            
+    proxy-companion:
+        container_name: proxy-companion
+        restart: always
+        image: sebastienheyd/self-signed-proxy-companion
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+            - ./certs:/etc/nginx/certs
+
+networks:
+    nginx-proxy-network:
+        external: true
