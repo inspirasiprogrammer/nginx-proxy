@@ -14,7 +14,7 @@ docker network create --driver bridge nginx-proxy-network
 ```bash
 docker compose up -d
 ```
-3. Your CA certificate and self-signed SSL certificate will be put under ```certs``` directory.
+3. Your CA certificate and self-signed SSL certificate will be generated under ```certs``` directory.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
