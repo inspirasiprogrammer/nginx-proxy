@@ -14,7 +14,18 @@ docker network create --driver bridge nginx-proxy-network
 ```bash
 docker compose up -d
 ```
-3. Your CA certificate and self-signed SSL certificate will be generated under ```certs``` directory.
+3. Run your web server container by adding environment variables VIRTUAL_HOST, VIRTUAL_PORT, and SELF_SIGNED_HOST. This is an example using [laravel-web-dev docker image](https://hub.docker.com/r/dptsi/laravel-web-dev).
+
+```bash
+docker run -d \
+--name your.domain.com \
+-v /path/to/your/web/project:/var/www/html \
+-e VIRTUAL_HOST=your.domain.com \
+-e VIRTUAL_PORT=8080 \
+-e SELF_SIGNED_HOST=your.domain.com \
+dptsi/laravel-web-dev
+```
+4. Your CA certificate and self-signed SSL certificate will be generated under ```certs``` directory.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
