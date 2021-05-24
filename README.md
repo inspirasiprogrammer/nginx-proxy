@@ -14,7 +14,9 @@ docker network create --driver bridge nginx-proxy-network
 ```bash
 docker compose up -d
 ```
-3. Run your web server container by adding environment variables VIRTUAL_HOST, VIRTUAL_PORT, and SELF_SIGNED_HOST. This is an example using [laravel-web-dev docker image](https://hub.docker.com/r/dptsi/laravel-web-dev).
+3. Add ca.crt to your browser so that your upcoming web apps will be trusted. 
+
+4. Run your web server container by adding environment variables VIRTUAL_HOST, VIRTUAL_PORT, and SELF_SIGNED_HOST. This is an example using [laravel-web-dev docker image](https://hub.docker.com/r/dptsi/laravel-web-dev).
 
 ```bash
 docker run -d \
